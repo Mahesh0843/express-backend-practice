@@ -3,8 +3,6 @@ const Todo = require("../models/Todo");
 exports.deletetodo = async (req, res) => {
     try {
         const id = req.params.id;
-
-        // Find the todo by ID and delete it
         const deletedTodo = await Todo.findByIdAndDelete(id);
 
         if (!deletedTodo) {
