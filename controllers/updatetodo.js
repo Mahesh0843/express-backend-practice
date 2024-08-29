@@ -2,14 +2,13 @@ const Todo = require("../models/Todo");
 
 exports.updatetodo = async (req, res) => {
     try {
-        const { title, description } = req.body; // Extract title and description from request body
-        const id = req.params.id; // Get the Todo ID from the request parameters
+        const { title, description } = req.body;
+        const id = req.params.id; 
 
-        // Find the Todo by ID and update it with the new data
         const updatedTodo = await Todo.findByIdAndUpdate(
             id, // The ID of the document to update
-            { title, description, updatedAt: Date.now() }, // Correctly invoke Date.now() to get the current timestamp
-            { new: true, runValidators: true } // Options to return the updated document and run validation
+            { title, description, updatedAt: Date.now() },
+            { new: true, runValidators: true } 
         );
 
         if (!updatedTodo) {
@@ -18,8 +17,7 @@ exports.updatetodo = async (req, res) => {
                 message: "Todo not found",
             });
         }
-
-        // Send a success response with the updated Todo
+        
         res.status(200).json({
             success: true,
             data: updatedTodo,
