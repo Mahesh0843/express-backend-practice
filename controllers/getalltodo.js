@@ -20,7 +20,7 @@ exports.getalltodo = async (req, res) => {
 
 exports.gettodobyid = async (req, res) => {
     try {
-        const todoId = req.params.id;  // Extract the ID from the request parameters
+        const todoId = req.params.id;  
         const todo = await Todo.findById({_id : todoId});
 
         if (!todo) {
